@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>验证码
+            <input type="text" placeholder="短信验证码">
+            <button class="btm">获取验证码</button>
+    </div>
+    <script src="../js/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(".btm").on("click",function(){
+        timeFn();
+        function timeFn(){
+            $(".btm").html(5+"s");  
+            var second=5;
+            var timer=null;
+            timer=setInterval(function(){
+                $('.btm').attr("disabled",true);
+                second-=1;
+                if(second>0){
+                    $(".btm").html(second+"s");    
+                }else{
+                    clearInterval(timer)
+                    $(".btm").html("重新发送");  
+                    $('.btm').attr("disabled",false);
+                }
+            },1000)
+        }
+    })
+    </script>
+</body>
+
+</html>
